@@ -1,1 +1,14 @@
-
+<files ".htaccess">
+	order allow,deny
+	deny from all
+</files>
+<ifModule mod_headers.c>
+	Header unset ETag
+</ifModule>
+FileETag None
+Options All -Indexes
+# RewriteEngine On
+# RewriteRule ^(.*)$ file.php?id=$1 [L]
+php_value upload_max_filesize 5M
+php_value post_max_size 5M
+php_value max_execution_time 300
