@@ -1,19 +1,19 @@
 * {
 	box-sizing: border-box;
-	outline:none;
+	outline: none;
 }
 body {
-	background:#fff;
-	color:#000;
-	margin:0px;
+	background: #fff;
+	color: #000;
+	margin: 0px;
 }
 a {
 	color: #000000;
 	text-decoration: none;
 }
 img {
-	max-width:100%;
-	height:auto
+	max-width: 100%;
+	height: auto;
 }
 @media(max-width:600px) {
 	
