@@ -189,7 +189,7 @@
 		}
 		if ($uniq == true)
 		{
-			return uniqid() . implode($result);
+			return uniqid() . '_' . implode($result);
 		}
 		else
 		{
