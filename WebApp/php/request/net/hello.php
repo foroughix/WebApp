@@ -1,4 +1,4 @@
 <?php
-if(!defined('WebApp')){exit();}
-$w = 'Hello World!';
+	if(!defined('WebApp')){exit();}
+	$w = 'Hello World!';
 ?>
