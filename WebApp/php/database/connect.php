@@ -4,7 +4,7 @@
 	$connect = mysqli_connect('localhost', 'root', '', 'webapp');
 	if (!$connect)
 	{
-		echo 'Error connecting to database (php\database\connect.php)!';
+		echo 'Error connecting to database (php\database\connect.php)';
 		exit();
 	}
 	mysqli_set_charset($connect, 'utf8mb4');
