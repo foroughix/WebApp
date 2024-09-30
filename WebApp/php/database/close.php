@@ -1,4 +1,4 @@
 <?php
-if(!defined('WebApp')){exit();}
-mysqli_close($connect);	
+	if(!defined('WebApp')){exit();}
+	mysqli_close($connect);	
 ?> 
