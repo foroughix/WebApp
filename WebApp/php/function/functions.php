@@ -1,142 +1,199 @@
 <?php
 	if(!defined('WebApp')){exit();}
-	function POST($var = 'action') {
+	function post($var = 'action', $check = 'full')
+	{
 		global $connect;
-		if(isset($_POST[$var]))
-		return strip_tags(mysqli_real_escape_string($connect, $_POST[$var]));
+		if (isset($_POST[$var]))
+		{
+			if ($check == 'full')
+			{
+				return strip_tags(mysqli_real_escape_string($connect, $_POST[$var]));
+			}
+			else if ($check == 'sql')
+			{
+				return mysqli_real_escape_string($connect, $_POST[$var]);
+			}
+			else if ($check == 'html')
+			{
+				return strip_tags($_POST[$var]);
+			}
+		}
+		else
+		{
+			return '';
+		}
 	}
-	function POST2($var = 'action') {
+	function get($var = 'action', $check = 'full')
+	{
 		global $connect;
-		if(isset($_POST[$var]))
-		return mysqli_real_escape_string($connect, $_POST[$var]);
+		if (isset($_GET[$var]))
+		{
+			if ($check == 'full')
+			{
+				return strip_tags(mysqli_real_escape_string($connect, $_GET[$var]));
+			}
+			else if ($check == 'sql')
+			{
+				return mysqli_real_escape_string($connect, $_GET[$var]);
+			}
+			else if ($check == 'html')
+			{
+				return strip_tags($_GET[$var]);
+			}
+		}
+		else
+		{
+			return '';
+		}
 	}
-	function GET($var = 'action') {
+	function check($string = '', $check = 'full')
+	{
 		global $connect;
-		if(isset($_GET[$var]))
-		return strip_tags(mysqli_real_escape_string($connect, $_GET[$var]));
+		if ($check == 'full')
+		{
+			return strip_tags(mysqli_real_escape_string($connect, $string));
+		}
+		else if ($check == 'sql')
+		{
+			return mysqli_real_escape_string($connect, $string);
+		}
+		else if ($check == 'html')
+		{
+			return strip_tags($string);
+		}
 	}
-	function GET2($var = 'action') {
-		global $connect;
-		if(isset($_GET[$var]))
-		return mysqli_real_escape_string($connect, $_GET[$var]);
-	}
-	function CHECK($var = null) {
-		global $connect;
-		return strip_tags(mysqli_real_escape_string($connect, $var));
-	}
-	function CHECK2($var = null) {
-		global $connect;
-		return mysqli_real_escape_string($connect, $var);
-	}
-	function is_string_valid($var1 = null, $var2 = 12, $var3 = 24) {
-		if (!isset($var1) || trim($var1) === '') {
+	function isValidString($string = null, $min = 4, $max = 32)
+	{
+		if (!isset($string) || trim($string) === '')
+		{
 			return false;	
 		}
-		else {
-			if (mb_strlen($var1, 'UTF-8') < $var2) {
+		else
+		{
+			if (mb_strlen($string, 'UTF-8') < $min)
+			{
 				return false;
 			}
-			else if (mb_strlen($var1, 'UTF-8') > $var3) {
+			else if (mb_strlen($string, 'UTF-8') > $max)
+			{
 				return false;
 			}
-			else {       
+			else
+			{       
 				return true;
 			}
 		}
 	}
-	function is_url_valid($var = null) {
-		if (filter_var($var, FILTER_VALIDATE_URL) === FALSE) {
+	function isValidUrl($string = '')
+	{
+		if (filter_var($string, FILTER_VALIDATE_URL) === FALSE)
+		{
 			return false;
 		}
-		else {
+		else
+		{
 			return true;
 		}
 	}
-	function is_username_valid($var = null) {
-		if (preg_match('/^[A-Za-z0-9]{4,24}$/', $var)) {
+	function isValidUsername($string = '')
+	{
+		if (preg_match('/^[A-Za-z0-9]{4,32}$/', $string))
+		{
 			return true;
 		}
-		else {
+		else
+		{
 			return false;
 		}
 	}
-	function is_email_valid($var = null) {
-		if (filter_var($var, FILTER_VALIDATE_EMAIL)) {
-			if (is_string_valid($var, 6, 32)) {
+	function isValidEmail($string = '')
+	{
+		if (filter_var($string, FILTER_VALIDATE_EMAIL))
+		{
+			if (isValidString($string, 4, 32))
+			{
 				return true;
 			}
-			else {
+			else
+			{
 				return false;
 			}
 		}
-		else {
+		else
+		{
 			return false;
 		}
 	}
-	function get_ip() {
+	function getIp()
+	{
 		$ip = '';
 		if (getenv('HTTP_CLIENT_IP'))
+		{
 			$ip = getenv('HTTP_CLIENT_IP');
-		else if(getenv('HTTP_X_FORWARDED_FOR'))
+		}
+		else if (getenv('HTTP_X_FORWARDED_FOR'))
+		{
 			$ip = getenv('HTTP_X_FORWARDED_FOR');
-		else if(getenv('HTTP_X_FORWARDED'))
+		}
+		else if (getenv('HTTP_X_FORWARDED'))
+		{
 			$ip = getenv('HTTP_X_FORWARDED');
-		else if(getenv('HTTP_FORWARDED_FOR'))
+		}
+		else if (getenv('HTTP_FORWARDED_FOR'))
+		{
 			$ip = getenv('HTTP_FORWARDED_FOR');
-		else if(getenv('HTTP_FORWARDED'))
+		}
+		else if (getenv('HTTP_FORWARDED'))
+		{
 			$ip = getenv('HTTP_FORWARDED');
-		else if(getenv('REMOTE_ADDR'))
+		}
+		else if (getenv('REMOTE_ADDR'))
+		{
 			$ip = getenv('REMOTE_ADDR');
+		}
 		else
+		{
 			$ip = 'UNKNOWN';
-		$ip = CHECK($ip);
+		}
+		$ip = check($ip);
 		return $ip;
 	}
-	function get_agent() {
-		return CHECK($_SERVER['HTTP_USER_AGENT']);
+	function getAgent()
+	{
+		return check($_SERVER['HTTP_USER_AGENT']);
 	}
-	function get_url() {
-		return CHECK($_SERVER['REQUEST_URI']);
+	function getUrl()
+	{
+		return check($_SERVER['REQUEST_URI']);
 	}
-	function dl_slash($var = null) {
-		if (substr($var, -1) == '/') {
-			return substr($var, 0, -1);
+	function deleteLastChar($string = '', $char = ',')
+	{
+		if (substr($string, -1) == $char)
+		{
+			return substr($string, 0, -1);
 		}
-		else {
-			return $var;
-		}
-	}
-	function dl_comma($var = null) {
-		if (substr($var, -1) == ',') {
-			return substr($var, 0, -1);
-		}
-		else {
-			return $var;
+		else
+		{
+			return $string;
 		}
 	}
-	function random_password($var = 8) {
-		$ch = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-		$pass = array(); 
-		$chl = strlen($ch) - 1; 
-		for ($i = 0; $i < $var; $i++) {
-			$n = rand(0, $chl);
-			$pass[] = $ch[$n];
+	function randomKey($number = 24, $uniq = false)
+	{
+		$string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+		$stringNumber = strlen($string) - 1; 
+		$result = array(); 
+		for ($i = 0; $i < $number; $i++)
+		{
+			$random = rand(0, $stringNumber);
+			$result[] = $string[$random];
 		}
-		return implode($pass);
-	}
-	function random_key($var1 = 24, $var2 = false) {
-		$ch = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-		$key_a = array(); 
-		$chl = strlen($ch) - 1; 
-		for ($i = 0; $i < $var1; $i++) {
-			$n = rand(0, $chl);
-			$key_a[] = $ch[$n];
+		if ($uniq == true)
+		{
+			return uniqid() . implode($result);
 		}
-		if ($var2 == true) {
-			return uniqid().implode($key_a);
-		}
-		else {
-			return implode($key_a);
+		else
+		{
+			return implode($result);
 		}
 	}
 ?>
