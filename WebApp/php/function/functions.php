@@ -177,7 +177,7 @@
 			return $string;
 		}
 	}
-	function randomKey($number = 24, $uniq = false)
+	function randomKey($number = 32, $uniq = false)
 	{
 		$string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 		$stringNumber = strlen($string) - 1; 
