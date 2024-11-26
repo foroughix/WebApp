@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `webapp` (
   `id` int(11) NOT NULL,
-  `title` tinytext DEFAULT NULL,
-  `content` text DEFAULT NULL,
+  `name` tinytext DEFAULT NULL,
+  `value` text DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
