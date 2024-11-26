@@ -1,11 +1,11 @@
 <?php
 	if(!defined('WebApp')){exit();}
-	function post($var = 'action', $check = 'full')
+	function post($var = 'action', $check = 'all')
 	{
 		global $connect;
 		if (isset($_POST[$var]))
 		{
-			if ($check == 'full')
+			if ($check == 'all')
 			{
 				return strip_tags(mysqli_real_escape_string($connect, $_POST[$var]));
 			}
@@ -23,12 +23,12 @@
 			return '';
 		}
 	}
-	function get($var = 'action', $check = 'full')
+	function get($var = 'action', $check = 'all')
 	{
 		global $connect;
 		if (isset($_GET[$var]))
 		{
-			if ($check == 'full')
+			if ($check == 'all')
 			{
 				return strip_tags(mysqli_real_escape_string($connect, $_GET[$var]));
 			}
@@ -46,10 +46,10 @@
 			return '';
 		}
 	}
-	function check($string = '', $check = 'full')
+	function check($string = '', $check = 'all')
 	{
 		global $connect;
-		if ($check == 'full')
+		if ($check == 'all')
 		{
 			return strip_tags(mysqli_real_escape_string($connect, $string));
 		}
