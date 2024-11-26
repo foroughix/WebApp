@@ -3,7 +3,7 @@
 	define('WebApp', true);
 	require_once 'php/cache/control.php';
 	require_once 'php/database/connect.php';
-	require_once 'php/function/functions.php';
+	require_once 'php/function/main.php';
 	require_once 'php/json/format.php';
 	$q = explode('/', getUrl());
 	unset($q[0]);
