@@ -4,7 +4,7 @@
 	require_once 'php/session/start.php';
 	require_once 'php/cache/control.php';
 	require_once 'php/database/connect.php';
-	require_once 'php/function/functions.php';
+	require_once 'php/function/base.php';
 	$q = explode('/', getUrl());
 	unset($q[0]);
 	$w = '';
