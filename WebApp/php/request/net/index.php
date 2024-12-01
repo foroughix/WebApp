@@ -1,4 +1,4 @@
 <?php
 	if(!defined('WebApp')){exit();}
-	$w = 'Hello World!';
+	$w = 'Welcome to WebApp (php\request\net\index.php)';
 ?>
