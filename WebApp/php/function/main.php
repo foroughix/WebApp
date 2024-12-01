@@ -97,7 +97,7 @@
 	}
 	function isValidUsername($string = '')
 	{
-		if (preg_match('/^[A-Za-z0-9]{4,32}$/', $string))
+		if (preg_match('/^[A-Za-z0-9]{4,16}$/', $string))
 		{
 			return true;
 		}
