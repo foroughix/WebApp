@@ -9,7 +9,14 @@
 	unset($q[0]);
 	$w = '';
 
-	require_once 'php/request/net/hello.php';
+	if (!$q[1]) 
+	{
+		require_once 'php/request/net/index.php';
+	}
+	else
+	{
+		require_once 'php/request/net/error.php';
+	}
 
 	ob_end_clean();
 	$result = str_replace('	', '', $w);
