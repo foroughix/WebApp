@@ -9,7 +9,14 @@
 	unset($q[0]);
 	$w = array();
 
-	require_once 'php/request/api/hello.php';
+	if (!$q[1])
+	{
+		require_once 'php/request/api/index.php';
+	}
+	else 
+	{
+		require_once 'php/request/api/error.php';
+	}
 
 	ob_end_clean();
 	$result = $w;
