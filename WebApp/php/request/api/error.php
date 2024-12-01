@@ -1,4 +1,4 @@
 <?php
 	if(!defined('WebApp')){exit();}
-	$w = array('error' => true);
+	$w = array('error' => true, 'result' => 'Not Found');
 ?>
