@@ -126,7 +126,7 @@
 	}
 	function getIp()
 	{
-		$ip = '';
+		$ip = 'UNKNOWN';
 		if (getenv('HTTP_CLIENT_IP'))
 		{
 			$ip = getenv('HTTP_CLIENT_IP');
@@ -150,10 +150,6 @@
 		else if (getenv('REMOTE_ADDR'))
 		{
 			$ip = getenv('REMOTE_ADDR');
-		}
-		else
-		{
-			$ip = 'UNKNOWN';
 		}
 		$ip = check($ip);
 		return $ip;
