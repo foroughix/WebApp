@@ -9,7 +9,7 @@
 	unset($q[0]);
 	$w = array();
 
-	if (!$q[1])
+	if (!$q[2])
 	{
 		require_once 'php/request/api/index.php';
 	}
