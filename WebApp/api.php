@@ -7,6 +7,7 @@
 	require_once 'php/json/format.php';
 	$q = explode('/', getUrl());
 	unset($q[0]);
+	unset($q[1]);
 	$w = array();
 
 	if (!$q[2])
