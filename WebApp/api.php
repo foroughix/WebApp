@@ -14,6 +14,10 @@
 	{
 		require_once 'php/request/api/index.php';
 	}
+	/* elseif ($q[2] == 'example') 
+	{
+		require_once 'php/request/api/example.php';
+	} */
 	else 
 	{
 		require_once 'php/request/api/error.php';
