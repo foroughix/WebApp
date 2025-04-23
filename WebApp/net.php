@@ -13,6 +13,10 @@
 	{
 		require_once 'php/request/net/index.php';
 	}
+	/* elseif ($q[1] == 'example') 
+	{
+		require_once 'php/request/net/example.php';
+	} */
 	else
 	{
 		require_once 'php/request/net/error.php';
