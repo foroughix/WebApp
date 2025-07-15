@@ -7,6 +7,7 @@
 </ifModule>
 FileETag None
 Options All -Indexes
+LimitRequestBody 10485760
 RewriteEngine On
 RewriteRule ^assets/(.*)$ assets/$1 [L]
 RewriteRule ^api/(.*)$ api.php?$1 [L]
