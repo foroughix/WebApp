@@ -24,8 +24,8 @@ foreach ($headers as $header => $value)
 # Mysqli update, delete, insert
 ```
 mysqli_query($connect, 'UPDATE webapp SET value = "'.$value.'" WHERE id = "'.$id.'"');
-mysqli_query($connect, 'DELETE FROM webapp WHERE id = "'.$id.'" AND key = "'.$key.'"');	
-mysqli_query($connect, 'INSERT INTO webapp (key, value) VALUES ("'.$key.'", "'.$value.'")');
+mysqli_query($connect, 'DELETE FROM webapp WHERE id = "'.$id.'" AND name = "'.$name.'"');	
+mysqli_query($connect, 'INSERT INTO webapp (name, value) VALUES ("'.$name.'", "'.$value.'")');
 ```
 # Post check
 ```
