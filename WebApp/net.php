@@ -1,7 +1,7 @@
 <?php
 	ob_start();
 	define('WebApp', true);
-	require_once 'php/session/start.php';
+	require_once 'php/session/control.php';
 	require_once 'php/cache/control.php';
 	require_once 'php/database/connect.php';
 	require_once 'php/function/main.php';
@@ -27,6 +27,5 @@
 	echo $result;
 	ob_start();
 	require_once 'php/database/close.php';
-	require_once 'php/session/regenerate.php';
 	ob_end_clean();
 ?>
