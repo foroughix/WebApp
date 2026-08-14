@@ -4,4 +4,5 @@
 	ini_set('session.cookie_lifetime', $session_time);
 	ini_set('session.gc_maxlifetime', $session_time);
 	session_start();
+	session_regenerate_id();
 ?> 
